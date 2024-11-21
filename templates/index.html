@@ -54,12 +54,12 @@
           </h6>
           <p class="card-text" style="color: #6c757d">
             {{ post.content|slice:":300" }}
-            {% if post.content|length > 300 %}.....<a href="{% url 'post_details' post.id %}" class="text-decoration-none text-warning">Read full story?</a>{% endif %}
+            {% if post.content|length > 300 %}.....<a href="{% url 'post_details' post.id %}" class="text-decoration-none text-primary">Read full story?</a>{% endif %}
           </p>
           <div style="font-size: 0.85em; margin-bottom: 1rem">
             {% for cat in post.category.all %}
             <span
-              class="badge text-bg-info p-2 m-1"
+              class="badge p-2 m-1"
               style="background-color: #6c757d"
               >{{ cat.name }}</span>
             {% endfor %}
