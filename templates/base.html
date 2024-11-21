@@ -31,6 +31,14 @@
       main {
         flex-grow: 1; /* Allow main content to grow and push footer down */
       }
+      .card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+    
+      .card:hover {
+        transform: scale(1.05);  /* Zooms in the card slightly */
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);  /* Adds a more pronounced shadow */
+      }
   .nav-item .styled-text {
     font-size: 1.5rem; /* Base font size */
     color: dark; /* Default color for all text */

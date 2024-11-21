@@ -1,17 +1,5 @@
 {% extends "base.html" %} {% block content %}
 <div class="container my-4">
-  <!-- <select
-    class="form-select"
-    aria-label="Default select example"
-    onchange="location = this.value"
-  >
-    <option value="" selected>Your interest on -></option>
-    {% for cat in category %}
-    <option value="{% url 'category_wise_post' cat.slug %}">
-      {{ cat.name }}
-    </option>
-    {% endfor %}
-  </select> -->
   <div class="dropdown-container text-center mb-4">
     <label for="categorySelect" class="form-label fw-bold text-secondary">Choose Your Interest:</label>
     <select
@@ -50,33 +38,30 @@
   <div class="row">
     {% for post in data %}
     <div class="col-md-6 mb-4">
-
       <div
         class="card shadow-sm h-100"
-        style="border-radius: 10px; overflow: hidden"
+        style="border-radius: 10px; overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease;"
       >
-      {% if post.image %}
-      <img src="{{post.image.url}}" class="card-img-top" style="height: 400px;"alt="...">
-      {% endif %}
+        {% if post.image %}
+        <img src="{{ post.image.url }}" class="card-img-top" style="height: 400px;" alt="...">
+        {% endif %}
         <div class="card-body" style="background-color: #f8f9fa">
           <h5 class="card-title" style="font-weight: bold; color: #343a40">
-            {{ post.title|slice:":50" }} {% if post.title|length > 50 %} ...
-            {% endif %}
+            {{ post.title|slice:":50" }} {% if post.title|length > 50 %} ... {% endif %}
           </h5>
           <h6 class="text-muted" style="font-size: 0.9em">
-            By {{ post.author.first_name}} {{post.author.last_name}}
+            By {{ post.author.first_name }} {{ post.author.last_name }}
           </h6>
           <p class="card-text" style="color: #6c757d">
             {{ post.content|slice:":300" }}
-            {% if post.content|length > 300 %}.....<a href="{% url 'post_details' post.id%}" class = "text-decoration-none text-warning">Read full story?</a>{% endif %}
+            {% if post.content|length > 300 %}.....<a href="{% url 'post_details' post.id %}" class="text-decoration-none text-warning">Read full story?</a>{% endif %}
           </p>
           <div style="font-size: 0.85em; margin-bottom: 1rem">
             {% for cat in post.category.all %}
             <span
               class="badge text-bg-info p-2 m-1"
               style="background-color: #6c757d"
-              >{{ cat.name }}</span
-            >
+              >{{ cat.name }}</span>
             {% endfor %}
           </div>
         </div>
