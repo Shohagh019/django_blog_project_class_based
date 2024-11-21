@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8 mb-4 position-relative">
+      <div
+        class="card shadow-lg h-100"
+        style="border-radius: 15px; overflow: hidden;"
+      >
+      <a
+        href="{% url 'home' %}"
+        class="btn position-absolute d-flex align-items-center justify-content-center"
+        style="
+          top: 10px;
+          right: 10px;
+          background: linear-gradient(145deg, #f5f5f5, #e5e5e5);
+          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), inset 0 -2px 6px rgba(0, 0, 0, 0.05);
+          font-size: 1.2rem;
+          font-weight: bold;
+          border: none;
+          border-radius: 50%;
+          width: 36px;
+          height: 36px;
+          text-decoration: none;
+          transition: all 0.3s ease;
+        "
+        onmouseover="this.style.boxShadow='0 6px 12px rgba(0, 0, 0, 0.2)'; this.style.color='#ff1e2b';"
+        onmouseout="this.style.boxShadow='0 4px 6px rgba(0, 0, 0, 0.1)'; this.style.color='#ff4b5c';"
+        >&times;</a
+      >
+        {% if post.image %}
+        <img
+          src="{{ post.image.url }}"
+          class="card-img-top"
+          alt="Post Image"
+          style="height: 500px; object-fit: cover;"
+        />
+        {% endif %}
+        <div class="card-body p-4" style="background-color: #f9fbfc;">
+          <h2 class="card-title mb-3" style="font-weight: bold; color: #2c3e50;">
+            {{ post.title }}
+          </h2>
+          <h6 class="text-muted mb-3" style="font-size: 0.95em;">
+            By <span style="font-weight: bold;">{{ post.author.first_name }} {{ post.author.last_name }}</span>
+          </h6>
+          <p class="card-text mb-4" style="color: #34495e; line-height: 1.7;">
+            {{ post.content }}
+          </p>
+          <div class="d-flex flex-wrap" style="gap: 0.5rem;">
+            {% for cat in post.category.all %}
+            <span
+              class="badge px-3 py-2 text-dark"
+              style="background-color: #f9e7db;"
+              >{{ cat.name }}</span
+            >
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}
