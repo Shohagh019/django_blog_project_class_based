@@ -16,49 +16,49 @@
     <title>Aslihan's Blog</title>
     <!-- styling navbar -->
     <style>
-      html, body {
+      html,
+      body {
         height: 100%; /* Full height for the document */
         margin: 0; /* Remove default margins */
         background-color: #dbf9f6; /* Light greyish-blue background */
         color: #2c3e50; /* Dark text color for contrast */
       }
-    
+
       body {
         display: flex;
         flex-direction: column; /* Make body a flex container */
       }
-    
+
       main {
         flex-grow: 1; /* Allow main content to grow and push footer down */
       }
       .card {
         transition: transform 0.3s ease, box-shadow 0.3s ease;
       }
-    
+
       .card:hover {
-        transform: scale(1.05);  /* Zooms in the card slightly */
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);  /* Adds a more pronounced shadow */
+        transform: scale(1.05); /* Zooms in the card slightly */
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); /* Adds a more pronounced shadow */
       }
-  .nav-item .styled-text {
-    font-size: 1.5rem; /* Base font size */
-    color: dark; /* Default color for all text */
-    letter-spacing: 1px;
-    text-transform: lowercase; /* Ensures all text is lowercase */
-  }
+      .nav-item .styled-text {
+        font-size: 1.5rem; /* Base font size */
+        color: dark; /* Default color for all text */
+        letter-spacing: 1px;
+        text-transform: lowercase; /* Ensures all text is lowercase */
+      }
 
-  .nav-item .styled-text .highlight-a {
-    font-size: 2rem; /* Larger size for 'A' */
-    color: #ffc107; /* Warning color for 'A' */
-    font-style: normal; /* Make 'A' non-italic for better emphasis */
-    text-transform: uppercase; /* Ensures 'A' is uppercase */
-  }
+      .nav-item .styled-text .highlight-a {
+        font-size: 2rem; /* Larger size for 'A' */
+        color: #ffc107; /* Warning color for 'A' */
+        font-style: normal; /* Make 'A' non-italic for better emphasis */
+        text-transform: uppercase; /* Ensures 'A' is uppercase */
+      }
 
-  .nav-item .styled-text:hover {
-
-    text-shadow: 0px 4px 6px rgba(255, 255, 255, 0.5); /* Subtle hover effect */
-    transform: scale(1.05); /* Slight enlargement on hover */
-    transition: all 0.3s ease-in-out;
-  }
+      .nav-item .styled-text:hover {
+        text-shadow: 0px 4px 6px rgba(255, 255, 255, 0.5); /* Subtle hover effect */
+        transform: scale(1.05); /* Slight enlargement on hover */
+        transition: all 0.3s ease-in-out;
+      }
       /* Gradient background for the navbar */
       .navbar {
         background: linear-gradient(90deg, #03fcce, #030005);
@@ -124,7 +124,6 @@
       .dropdown-divider {
         border-color: rgba(255, 255, 255, 0.3);
       }
-      
     </style>
   </head>
   <body>
@@ -158,7 +157,7 @@
               {% if request.user.is_authenticated %}
               <li class="nav-item">
                 <a
-                  class="nav-link text-uppercase px-3 mt-3 "
+                  class="nav-link text-uppercase px-3 mt-3"
                   href="{% url 'add_post' %}"
                   >Add Post</a
                 >
@@ -177,7 +176,7 @@
                     data-bs-toggle="dropdown"
                     aria-expanded="false"
                   >
-                  {{request.user.first_name}} {{request.user.last_name}}
+                    {{request.user.first_name}} {{request.user.last_name}}
                   </a>
                   <ul class="dropdown-menu" aria-labelledby="profileDropdown">
                     <li>
@@ -238,10 +237,14 @@
       </nav>
     </header>
     {% if messages %} {% for message in messages %}
-    <div class="alert alert-{{ message.tags }} alert-bg-{{ message.tags }} show w-100" role="alert" id="alertMessage">
+    <div
+      class="alert alert-{{ message.tags }} alert-bg-{{ message.tags }} show w-100"
+      role="alert"
+      id="alertMessage"
+    >
       <div class="d-flex justify-content-center">{{ message }}</div>
     </div>
-    {% endfor %} {% endif %} 
+    {% endfor %} {% endif %}
 
     <main class="flex-grow-1 py-5">
       {% block content %}
@@ -255,30 +258,57 @@
           <div class="col-lg-4 col-md-6 mb-4">
             <h5 class="text-uppercase text-warning">About Us</h5>
             <p>
-              Welcome to Aslihan's Blog, your go-to destination for insightful posts, 
-              creative ideas, and inspiring stories. Join us on this journey of discovery!
+              Welcome to Aslihan's Blog, your go-to destination for insightful
+              posts, creative ideas, and inspiring stories. Join us on this
+              journey of discovery!
             </p>
           </div>
           <!-- Quick Links -->
           <div class="col-lg-4 col-md-6 mb-4">
             <h5 class="text-uppercase text-warning">Quick Links</h5>
             <ul class="list-unstyled">
-              <li><a href="{% url 'home' %}" class="text-light text-decoration-none">Home</a></li>
-              <li><a href="{% url 'add_post' %}" class="text-light text-decoration-none">Add Post</a></li>
-              <li><a href="{% url 'profile' %}" class="text-light text-decoration-none">Profile</a></li>
-              <li><a href="" class="text-light text-decoration-none">Contact Us</a></li>
+              <li>
+                <a
+                  href="{% url 'home' %}"
+                  class="text-light text-decoration-none"
+                  >Home</a
+                >
+              </li>
+              <li>
+                <a
+                  href="{% url 'add_post' %}"
+                  class="text-light text-decoration-none"
+                  >Add Post</a
+                >
+              </li>
+              <li>
+                <a
+                  href="{% url 'profile' %}"
+                  class="text-light text-decoration-none"
+                  >Profile</a
+                >
+              </li>
+              <li>
+                <a href="" class="text-light text-decoration-none"
+                  >Contact Us</a
+                >
+              </li>
             </ul>
           </div>
           <!-- Contact Section -->
           <div class="col-lg-4 col-md-12">
             <h5 class="text-uppercase text-warning">Contact</h5>
             <p>
-              <i class="bi bi-envelope text-danger"></i> <a href="" class="text-light text-decoration-none">info@aslihansblog.com</a>
+              <i class="bi bi-envelope text-danger"></i>
+              <a href="" class="text-light text-decoration-none"
+                >info@aslihansblog.com</a
+              >
             </p>
             <p>
-              <i class="bi bi-geo-alt text-danger"></i> 12/126, Mirpur, Section-12, Pallabi, Dhaka.
+              <i class="bi bi-geo-alt text-danger"></i> 12/126, Mirpur,
+              Section-12, Pallabi, Dhaka.
             </p>
-            <p class= ''>
+            <p class="">
               <i class="bi bi-phone text-danger"></i> +88-01716258037
             </p>
           </div>
@@ -288,10 +318,18 @@
         <div class="d-flex justify-content-between align-items-center">
           <p class="mb-0">&copy; 2024 Aslihan's Blog. All Rights Reserved.</p>
           <div>
-            <a href="#" class="text-info text-decoration-none mx-2"><i class="bi bi-facebook"></i></a>
-            <a href="#" class="text-info text-decoration-none mx-2"><i class="bi bi-twitter"></i></a>
-            <a href="#" class="text-info text-decoration-none mx-2"><i class="bi bi-instagram"></i></a>
-            <a href="#" class="text-info text-decoration-none mx-2"><i class="bi bi-linkedin"></i></a>
+            <a href="#" class="text-info text-decoration-none mx-2"
+              ><i class="bi bi-facebook"></i
+            ></a>
+            <a href="#" class="text-info text-decoration-none mx-2"
+              ><i class="bi bi-twitter"></i
+            ></a>
+            <a href="#" class="text-info text-decoration-none mx-2"
+              ><i class="bi bi-instagram"></i
+            ></a>
+            <a href="#" class="text-info text-decoration-none mx-2"
+              ><i class="bi bi-linkedin"></i
+            ></a>
           </div>
         </div>
       </div>
@@ -303,10 +341,24 @@
     ></script>
     <script>
       // Remove the alert after 2 seconds
-      setTimeout(function() {
-        var alert = document.getElementById('alertMessage');
-        alert.style.display = 'none'; // Hide alert
+      setTimeout(function () {
+        var alert = document.getElementById("alertMessage");
+        alert.style.display = "none"; // Hide alert
       }, 4000); // Delay in milliseconds (2000ms = 2 seconds)
+
+      function toggleSection(sectionId) {
+        const section = document.getElementById(sectionId);
+        const isVisible = section.style.display === "block";
+
+        // Hide both sections
+        document.getElementById("commentFormSection").style.display = "none";
+        document.getElementById("commentsSection").style.display = "none";
+
+        // Show the selected section if it was hidden
+        if (!isVisible) {
+          section.style.display = "block";
+        }
+      }
     </script>
   </body>
 </html>
